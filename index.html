@@ -65,7 +65,17 @@
 
           <h1 class="heading-display">
             Learn French.<br>
-            <span class="accent">Achieve Your PR Dream.</span>
+            <span class="accent">Achieve Your
+              <span class="pr-flip" aria-label="PR">
+                <span class="pr-flip-inner">
+                  <span class="pr-front">PR</span>
+                  <span class="pr-back">
+                    <img src="images/passport.png" alt="">
+                  </span>
+                </span>
+              </span>
+              Dream.
+            </span>
           </h1>
 
           <p class="text-body-lg hero-lead">
@@ -150,6 +160,65 @@
             <p class="text-body-sm">Flexible &amp; Convenient</p>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="translator" id="translate">
+      <div class="translator-inner">
+        <div class="translator-intro">
+          <span class="text-label translator-kicker">Traduisez</span>
+          <h2 class="heading-h2 translator-title">English to French</h2>
+          <p class="text-body translator-lead">
+            Type anything in English and see a clear French translation instantly.
+          </p>
+        </div>
+
+        <div class="translator-board">
+          <div class="translator-pane">
+            <div class="translator-pane-head">
+              <span class="translator-lang">
+                <span class="translator-flag translator-flag-en" aria-hidden="true"></span>
+                English
+              </span>
+              <span class="translator-count" id="translate-count">0 / 1000</span>
+            </div>
+            <label class="visually-hidden" for="translate-from">English text</label>
+            <textarea
+              id="translate-from"
+              maxlength="1000"
+              rows="7"
+              placeholder="Type something in English…"
+              spellcheck="true"
+            ></textarea>
+            <div class="translator-chips" id="translate-chips">
+              <button type="button" class="translator-chip">Hello, how are you?</button>
+              <button type="button" class="translator-chip">I want to learn French.</button>
+              <button type="button" class="translator-chip">I am preparing for TEF Canada.</button>
+            </div>
+          </div>
+
+          <div class="translator-swap" aria-hidden="true">
+            <span>→</span>
+          </div>
+
+          <div class="translator-pane translator-pane-out">
+            <div class="translator-pane-head">
+              <span class="translator-lang">
+                <span class="translator-flag translator-flag-fr" aria-hidden="true"></span>
+                Français
+              </span>
+              <button type="button" class="translator-copy" id="translate-copy">Copy</button>
+            </div>
+            <div
+              class="translator-output"
+              id="translate-to"
+              lang="fr"
+              data-empty="true"
+              aria-live="polite"
+            ></div>
+            <p class="translator-status" id="translate-status"></p>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -109,6 +109,57 @@
 })();
 
 (function () {
+  var el = document.getElementById("cta-type");
+  if (!el) return;
+
+  var message = "Not Sure Which Program Is Right For You?";
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    el.textContent = message;
+    return;
+  }
+
+  var i = 0;
+  var typing = true;
+  var started = false;
+
+  function tick() {
+    if (typing) {
+      i += 1;
+      el.textContent = message.slice(0, i);
+      if (i >= message.length) {
+        typing = false;
+        setTimeout(tick, 2400);
+        return;
+      }
+      setTimeout(tick, 68);
+      return;
+    }
+
+    i -= 1;
+    el.textContent = message.slice(0, i);
+    if (i <= 0) {
+      typing = true;
+      setTimeout(tick, 500);
+      return;
+    }
+    setTimeout(tick, 32);
+  }
+
+  var section = el.closest(".explore-cta") || el;
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting || started) return;
+      started = true;
+      observer.disconnect();
+      setTimeout(tick, 280);
+    }, { threshold: 0.35 });
+    observer.observe(section);
+  } else {
+    setTimeout(tick, 400);
+  }
+})();
+
+(function () {
   var input = document.getElementById("translate-from");
   var output = document.getElementById("translate-to");
   var statusEl = document.getElementById("translate-status");
@@ -281,4 +332,39 @@
   }
 
   updateCount();
+})();
+
+(function () {
+  var form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var via = event.submitter && event.submitter.value === "email" ? "email" : "whatsapp";
+    var name = (form.name.value || "").trim();
+    var email = (form.email.value || "").trim();
+    var phone = (form.phone.value || "").trim();
+    var program = (form.program.value || "").trim();
+    var message = (form.message.value || "").trim();
+    var lines = [
+      "Hello, I would like to book a free demo class.",
+      "Name: " + name,
+      "Email: " + email
+    ];
+    if (phone) lines.push("Phone: " + phone);
+    if (program) lines.push("Interest: " + program);
+    if (message) lines.push("Message: " + message);
+    var body = lines.join("\n");
+
+    if (via === "email") {
+      window.location.href =
+        "mailto:Francaisontips@gmail.com?subject=" +
+        encodeURIComponent("Free demo class — " + name) +
+        "&body=" +
+        encodeURIComponent(body);
+      return;
+    }
+
+    window.open("https://wa.me/14162781058?text=" + encodeURIComponent(body), "_blank");
+  });
 })();

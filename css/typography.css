@@ -233,7 +233,7 @@ body {
 
 .text-button {
   font-family: var(--font-family);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 600;
 }
@@ -305,7 +305,7 @@ body {
   }
 
   .text-button {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -371,7 +371,7 @@ body {
   }
 
   .text-button {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -443,6 +443,6 @@ body {
   }
 
   .text-button {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
